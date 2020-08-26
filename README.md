@@ -1,5 +1,8 @@
 
-## RStudio Cheat Sheets
+## Cheat Sheets for R, Python, Linux Command Line, System Administration
+Useful cheatsheets I have picked up along the way. Mostly R data analysis package resources
+
+# RStudio Cheatsheets
 
 <img src="pngs/rstudio-ide.png" width=364 height=288 align="right"/>
 
