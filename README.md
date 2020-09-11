@@ -108,34 +108,6 @@ https://github.com/OWASP/CheatSheetSeries/search?q=csrf
 
 More information about the GitHub search feature can be found [here](https://help.github.com/en/articles/about-searching-on-github).
 
-# Project leaders
-
-* [Dominique Righetto](https://github.com/righettod).
-* [Jim Manico](https://github.com/jmanico).
-
-# Core technical review team
-
-**Any GitHub member is free to add a comment on any Proposal (issue) or PR.**
-
-However, we have created an official core technical review team (core commiters) in order to:
-* Review all PR/Proposal in a consistent/regular way using [GitHub's review feature](https://help.github.com/en/articles/reviewing-proposed-changes-in-a-pull-request).
-* Extend the field of technologies known by the review team.
-* Allow several technical opinions on a Proposal/PR, all exchanges are public because we use the GitHub comment feature.
-
-Decision of the core technical review team have the same weight than the projet leaders, so, if a reviewer reject a PR (*rejection must be technically documented and explained*) then project leaders will apply the global decision.
-
-Members:
-* [Elie Saad](https://github.com/ThunderSon).
-* [Jakub Maćkowski](https://github.com/mackowski).
-* [Dominique Righetto](https://github.com/righettod).
-* [Jim Manico](https://github.com/jmanico).
-
-# PR usage for core commiters
-
-For the following kind of modifications, the PR system will be used by the core commiters in order to allow peer review using the GitHub PR review system:
-* Addition of a new cheat sheet.
-* Deep modification of an existing cheat sheet.
-
 Below are the steps to properly submit a PR:
 1. Clone the project.
 2. Move on to the `master` branch: 
