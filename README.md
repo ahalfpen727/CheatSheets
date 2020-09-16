@@ -8,23 +8,13 @@ Useful cheatsheets I have picked up along the way. Mostly R data analysis packag
 
 The cheat sheets make it easy to learn about and use some of our favorite packages. They are published in their respective PDF versions here: https://www.rstudio.com/resources/cheatsheets/, some are also available in the RStudio IDE under Help-Cheatsheets.
 
-This repository contains the source Apple Keynote files or the current, archived and translated versions.
-
 The cheat sheets use the creative commons copyright. Please see the LICENSE document for more details.
-
-## Translations
-
-If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub or email it to us at [info@rstudio.com](mailto:info@rstudio.com) with the subject "Translated Cheatsheet".
 
 ## Tips for making a new cheat sheet
 
 Keep these tips in mind when creating a new cheat sheet:
 
 1. RStudio cheat sheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheat sheets to the repository with a pull request.
-
-1. The files `keynotes/0-template.key` and `powerpoints/0-template.ppt` are official templates that contain some helpful tips.
-
-    > Tip. You may find it easier to create a new cheat sheet by duplicating the most recent Keynote / Powerpoint cheat sheet.
 
 1. The cheat sheets are not meant to be text documents. Ideally, they are scannable visual aids that use layout and visual mnemonics to help people zoom into the functions they need. As an analogy, think of a cheat sheet as more like a well organized computer menu bar that leads you to a command than a manual that documents each command.
 
@@ -50,9 +40,11 @@ Keep these tips in mind when creating a new cheat sheet:
 
     * Tweak until happy. 
 
-1. Pay attention to the details!
-
 > Final tip: Edit the text to be very concise - rely on diagrams where possible.
+
+# Welcome to OWASP Cheat Sheet Series V2
+
+This repository contains all the cheat sheets of the project and represent the V2 of the [OWASP Cheat Sheet Series](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series) project.
 
 ![CSCounterBadge](https://img.shields.io/badge/Cheat_sheets_available-61-orange.svg)
 ![LicenseBadge](https://img.shields.io/badge/License-C_C-blue.svg)
@@ -62,10 +54,6 @@ Keep these tips in mind when creating a new cheat sheet:
 ![OWASPHeader](assets/Preface_Cheatsheet_Header.png)
 
 ![ProjectLogoOfficial](assets/Preface_Cheatsheet_Logo.png)
-
-# Welcome to OWASP Cheat Sheet Series V2
-
-This repository contains all the cheat sheets of the project and represent the V2 of the [OWASP Cheat Sheet Series](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series) project.
 
 # Table of Contents
 
@@ -155,11 +143,6 @@ Project's official logo files are hosted [here](https://github.com/OWASP/owasp-s
 **.github**:
 * Contains materials used to configure different behaviors of GitHub.
 
-**.circleci** / **.travis.yml** (file):
-* Contains the definition of the integration jobs used to control the integrity and consistency of the whole project:
-    * **[TravisCI](https://travis-ci.org/OWASP/CheatSheetSeries)** is used to perform compliance check actions at each Push/Pull Request. **It must be/stay the fastest possible** (currently inferior to 2 minutes) in order to provide a rapid compliance feedback about the Push/Pull Request.
-    * **[CircleCI](https://circleci.com/gh/OWASP/CheatSheetSeries)** is used to perform operations taking *longer time* like build, publish and deploy actions.
-
 # Offline website
 
 Unfortunately, a PDF file generation is not possible because the content is cut in some cheat sheets like for example the abuse case one.
@@ -243,15 +226,3 @@ The file **.markdownlinkcheck.json** define the configuration used to validate u
 # How to setup my contributor environment?
 
 See [here](CONTRIBUTING.md#how-to-setup-my-contributor-environment).
-
-# How to contribute?
-
-See [here](CONTRIBUTING.md#how-to-contribute).
-
-# Special thanks
-
-A special thanks you to the following peoples for the help provided during the migration:
-
-- [ThunderSon](https://github.com/ThunderSon): Deeply help about updating the OWASP wiki links for all the migrated cheat sheets.
-- [mackowski](https://github.com/mackowski): Deeply help about updating the OWASP wiki links for all the migrated cheat sheets.
-
