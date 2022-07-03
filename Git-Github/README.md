@@ -16,15 +16,42 @@ Think this is just useful for code? Think again! You ~~can~~ should
 version control papers, and small datasets (e.g. an RNA-seq counts
 table, not a 5GB SAM file).
 
+Quick setup — if you’ve done this kind of thing before
+or
+
+Get started by creating a new file or uploading an existing file. We recommend every repository include a README, LICENSE, and .gitignore.
+…or create a new repository on the command line
+
+```
+ echo "# CheatSheets" >> README.md
+ git init
+ git add README.md
+ git commit -m "first commit"
+ git branch -M main
+ git remote add origin https://github.com/ahalfpen727/CheatSheets.git
+ git push -u origin main
+```
+
+…or push an existing repository from the command line
+
+```
+ git remote add origin https://github.com/ahalfpen727/CheatSheets.git
+ git branch -M main
+ git push -u origin main
+```
+
 But first, tell Git who you are with: 
 
-    git config --global user.name "Drew"
-    git config --global user.email Drew@email.com
+```
+ git config --global user.name "Drew"
+ git config --global user.email Drew@email.com
+```
 
 ## Creating repositories, adding files, and committing
 
 ### Creating a repository from a directory, adding files, and committing
 
+```
     mkdir Drew
     cd Drew
     echo "This is a test repository." > test.txt
@@ -32,6 +59,7 @@ But first, tell Git who you are with:
     git add test.txt # this is called "staging"
     git commit -m "initial import" # this commits all staged files only. # use a commit message
     cd .. # get to where we were
+```
 
 Note something very important about Git: when you add a new file,
 you're not just telling Git it should be under version control, but
@@ -49,10 +77,12 @@ If you have an existing repository you want to clone, you use git
 clone. This essentially initializes a empty local git repository, and
 pulls a clone from the remote repository.
 
+```
     git clone ./Drew drew
     ls
     cd drew
     git log
+```
 
 ### Working with remotes
 
@@ -74,6 +104,7 @@ directory full of our project's bare reposistories. In this example,
 we'll create a bare repository named "remote". Remember, Git works
 with SSH!
 
+```
     rm -rf drew # sorry Drew.
 
     mkdir remote # this is our pretend remote; in real life, put this on a server everyone has access to
@@ -81,17 +112,23 @@ with SSH!
     git init --bare # older versions of Git require this to be git --bare init, but use the newest version!
     ls # see all the Git internal stuff? Not a place to do work!
     cd ..
+```
 
 Now, we're going to tell my local repository about this remote one.
 
+```
     cd Drew
     git remote add origin ../remote
     git remote ## or cat .git/config, SVN users, note that there is only ONE, YES ONE directory!
 
+```
+
 Now, let's push our commits to remote. 
     
-    git log # what commit are we at?
-    git push origin master
+```
+ git log # what commit are we at?
+ git push origin master
+```
 
 Why origin master? We want to tell git push (push is the subcommand)
 where we want to push (origin, which is the name of the remote we
@@ -102,6 +139,7 @@ added; "origin" is used by convention) and which branch we're on
 Now, let's pretend we're Drew again. Drew wants to get my work, add
 something to it, and check it in.
 
+```
     cd .. # get to where we were
     git clone remote drew
     cd drew
@@ -110,13 +148,16 @@ something to it, and check it in.
     echo "new gibberish" >> test.txt
     git commit -a -m "some gibberish added"
     git push origin master
+```
 
 Ok, so Drew added something to test.txt, commited it, and pushed it to
 the remote. Now, Drew wants to pull in Drew's changes:
 
+```
    cd ../Drew
    git pull origin master
    git diff HEAD^
+```
 
 This means take the HEAD (basically a pointer in Git's history to
 where your current working directory is), go back one commit in
@@ -125,7 +166,9 @@ commit.
 
 We can also look at specific files from older commits using git show:
 
+```
     git show HEAD^:test.txt
+```
 
 ## Git branching
 
@@ -142,7 +185,7 @@ branching on fake repositories. If you're using Git, you just sip some
 tea, lean back, and branch. Branches in Git are super easy, because
 they're virtual, not physical. 
 
-
+```
     git branch # see, we're in master now
     git checkout -b new-branch
     git branch
@@ -153,32 +196,33 @@ they're virtual, not physical.
     git checkout master # go back to master
     echo "different gibberish added. Uh oh." >> test.txt
     git commit -a -m "different gibberish added, clash anyone? "
+
+```
  
 We can look at this situation with:
 
+```
     gitk --all &
     # or 
     git log --graph --all
 
+```
+
 Now, let's merge that new-branch into master:
 
+```
    git branch # make sure you're in the branch you want to merge the other into.
    git merge new-branch
+```
 
 Uh oh, a merge conflict!! It's easy to resolve. Look what's up with
 git status, then manually resolve the conflict. When you're down add
 the files, and commit. That easy! And normally you won't find merge
 conflicts.
 
+```
     emacs test.txt
     git add test.txt
     git commit -m "merge conflict resolved"
     git push origin master # might as well?
-
-## What's next?
-
- - Following remote branches
- - git refspecs
- - git stash
- - Github
- - git blame
+```
