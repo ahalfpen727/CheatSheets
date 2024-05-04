@@ -1,0 +1,21 @@
+These are command lines used to generate the variant calls for a 50Kb window.  The files have been moved. So the files in path /panfs/nobackup/production/reseq-info/zheng/ can be found in the current directory. 
+
+gatk on LC data: 
+
+Executing command:
+/nfs/production/reseq-info/work/bin/java/jdk1.8.0_40/bin/java -Xmx4g -jar /nfs/production/reseq-info/work/bin/gatk-3.5/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /nfs/production/reseq-info/work/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa -I /panfs/nobackup/production/reseq-info/zheng/lc_tbams/low_coverage_bams/low_coverage_bams.chr20.49797778.chr20.52727058/low_coverage_bams.chr20.49797778.chr20.52727058.transpose_bam.transposed.bam -L chr20:52131281-52180929 -o /panfs/nobackup/production/reseq-info/zheng/lc_tbams/low_coverage_bams/low_coverage_bams.chr20.49797778.chr20.52727058/low_coverage_bams.chr20.52131281.chr20.52180929/low_coverage_bams.chr20.52131281.chr20.52180929.call_by_gatk_himem.vcf.gz --dbsnp /nfs/production/reseq-info/work/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz -dcov 250 -stand_emit_conf 10 -glm SNP -stand_call_conf 10
+
+
+samtools call on EX data:
+
+/nfs/production/reseq-info/work/bin/samtools-1.3/samtools mpileup -Eug -t DP -t SP -t AD -P ILLUMINA -pm3 -F0.2 -C50 -d 1400000 -f /nfs/production/reseq-info/work/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa -r chr20:52180930-52230578 /panfs/nobackup/production/reseq-info/zheng/get_ex_tbam/exome_bams/exome_bams.chr20.49797778.chr20.52727058/exome_bams.chr20.49797778.chr20.52727058.transpose_bam.transposed.bam | /nfs/production/reseq-info/work/bin/bcftools-1.3/bcftools call -mvA --ploidy GRCh38 -S /panfs/nobackup/production/reseq-info/zheng/get_ex_tbam/exome_bams/exome_bams.chr20.49797778.chr20.52727058/exome_bams.chr20.52180930.chr20.52230578/exome_bams.chr20.52180930.chr20.52230578.call_by_samtools.ped | /nfs/production/reseq-info/work/bin/tabix/bgzip -c > /panfs/nobackup/production/reseq-info/zheng/get_ex_tbam/exome_bams/exome_bams.chr20.49797778.chr20.52727058/exome_bams.chr20.52180930.chr20.52230578/exome_bams.chr20.52180930.chr20.52230578.call_by_samtools.vcf.gz
+
+
+samtools call on LC data:
+
+/nfs/production/reseq-info/work/bin/samtools-1.3/samtools mpileup -Eug -t DP -t SP -t AD -P ILLUMINA -pm3 -F0.2 -C50 -d 700000 -f /nfs/production/reseq-info/work/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa -r chr20:58585621-58635269 /panfs/nobackup/production/reseq-info/zheng/lc_tbams/low_coverage_bams/low_coverage_bams.chr20.58585621.chr20.61514901/low_coverage_bams.chr20.58585621.chr20.61514901.transpose_bam.transposed.bam | /nfs/production/reseq-info/work/bin/bcftools-1.3/bcftools call -mvA --ploidy GRCh38 -S /panfs/nobackup/production/reseq-info/zheng/lc_tbams/low_coverage_bams/low_coverage_bams.chr20.58585621.chr20.61514901/low_coverage_bams.chr20.58585621.chr20.58635269/low_coverage_bams.chr20.58585621.chr20.58635269.call_by_samtools.ped | /nfs/production/reseq-info/work/bin/tabix/bgzip -c > /panfs/nobackup/production/reseq-info/zheng/lc_tbams/low_coverage_bams/low_coverage_bams.chr20.58585621.chr20.61514901/low_coverage_bams.chr20.58585621.chr20.58635269/low_coverage_bams.chr20.58585621.chr20.58635269.call_by_samtools.vcf.gz
+
+
+Freebays call on LC + EX data
+
+/nfs/production/reseq-info/work/bin/freebayes_20160719/bin/freebayes --max-coverage 2000000 --min-alternate-count 3 --min-mapping-quality 1 --min-base-quality 3 --min-alternate-qsum 50 --genotyping-max-iterations 10 -f /nfs/production/reseq-info/work/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa -r chr20:49996374..50046022 -b /panfs/nobackup/production/reseq-info/zheng/lc_ex_tbams/bams/bams.chr20.49797778.chr20.52727058/bams.chr20.49797778.chr20.52727058.transpose_bam.transposed.bam | /nfs/production/reseq-info/work/bin/tabix/bgzip -c > /panfs/nobackup/production/reseq-info/zheng/lc_ex_tbams/bams/bams.chr20.49797778.chr20.52727058/bams.chr20.49996374.chr20.50046022/bams.chr20.49996374.chr20.50046022.call_by_freebayes.vcf.gz
